@@ -69,9 +69,10 @@
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="braids">Braids</button>
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
         </div>
+
         <div id="service-list" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
          
-          <!-- <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="nails">
+          <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="nails">
             <img src="/database/nail1.jpg" alt="Nail Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
             <h3 class="text-xl font-semibold mb-2">Classic Manicure</h3>
             <p class="text-gray-700 mb-4">A classic manicure with a touch of elegance.</p>
@@ -107,7 +108,7 @@
             <h3 class="text-xl font-semibold mb-2">Volume Lashes</h3>
             <p class="text-gray-700 mb-4">Fuller and more voluminous lash extensions.</p>
             <p class="text-pink-600 font-bold">$100</p>
-          </div> -->
+          </div>
         </div>
       </div>
     </section>
@@ -144,7 +145,23 @@
   </footer>
 
   <!-- JavaScript -->
-  <script type="module" src="script.js"></script>
+  <script src="script.js"></script>
   <script type="module" src="./database/index.js"></script>
+  <script type="module">
+     import servicesData from './database/index.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const servicelist = document.getElementById('service-list');
+        // Generate HTML for the service items
+        servicelist.innerHTML = servicesData.map(data => `
+            <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="${data.category}">
+                <img src="${data.imgPath}" alt="${data.name} Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
+                <h3 class="text-xl font-semibold mb-2">${data.name}</h3>
+                <p class="text-gray-700 mb-4">${data.description}</p>
+                <p class="text-pink-600 font-bold">R${data.price}</p>
+            </div>
+        `).join('');
+});
+  </script>
 </body>
 </html>
