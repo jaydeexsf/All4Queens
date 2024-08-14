@@ -16,4 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
-  
+
+  class Node {
+    constructor (data) {
+      data.next = '',
+      data.head = ''
+    }
+  }
