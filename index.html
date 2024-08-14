@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Professional beauty salon in Pretoria offering premium services in nails, braids, and lashes.">
   <meta name="keywords" content="beauty salon, nails, braids, lashes, Pretoria, professional beauty services">
-  <meta name="author" content="Your Name">
+  <meta name="author" content="Innocentia Moloantoa">
   <title>Beauty Salon - Pretoria</title>
   <link href="style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -13,20 +13,35 @@
 </head>
 <body class="font-sans antialiased bg-gray-100">
   <!-- Header Section -->
-  <header class="bg-pink-600 text-white py-6 fixed top-0 w-full z-30 shadow-md">
+  <header class="bg-pink-600 text-white py-6 fixed top-0 w-full z-30 shadow-lg">
     <div class="container mx-auto flex justify-between items-center px-4">
       <h1 class="text-3xl font-bold">Beauty Salon</h1>
-      <nav>
-        <button id="menu-toggle" class="text-white lg:hidden">
-          <i class="fas fa-bars fa-lg"></i>
+      <nav class="relative">
+        <button onclick="add()" id="menu-toggle" class="text-white lg:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="size-8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>          
+          <!-- <i class="fas fa-bars fa-lg"></i> -->
         </button>
-        <ul id="menu" class="lg:flex lg:space-x-8 hidden">
+        <ul id="menu" class="lg:flex  lg:space-x-8 hidden">
           <li><a href="#nails" class="hover:text-pink-200">Nails</a></li>
           <li><a href="#braids" class="hover:text-pink-200">Braids</a></li>
           <li><a href="#lashes" class="hover:text-pink-200">Lashes</a></li>
           <li><a href="#contact" class="hover:text-pink-200">Contact</a></li>
         </ul>
+        
       </nav>
+      <ul id="cancel" class="w-[250px] top-0 backdrop-blur-sm absolute right-0 px-6 py-6 gap-2 hidden justify-start items-start shadow-2xl flex-col h-[100vh] bg-opacity-30 bg-red-500">
+        <button onclick="remove()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="size-8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>                  
+        </button>
+        <li class="hover:text-red-200 py-2"><a href="#nails" class="">Nails</a></li>
+        <li  class="w-full py-4  "><a href="#braids" class="">Braids</a></li>
+        <li  class="w-full py-4 "><a href="#lashes" class="">Lashes</a></li>
+        <li  class="w-full py-4 "><a href="#contact" class="">Contact</a></li>
+      </ul>
     </div>
   </header>
 

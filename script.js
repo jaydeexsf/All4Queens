@@ -19,7 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   class Node {
     constructor (data) {
-      data.next = '',
+      this.data.next = '',
       data.head = ''
     }
+  }
+
+  const cancel = document.getElementById('cancel');
+
+  function add() {
+    cancel.style.display = 'flex'
+  }
+
+  function remove () {
+    cancel.style.display = 'none';
   }
