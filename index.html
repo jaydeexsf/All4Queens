@@ -15,7 +15,10 @@
   <!-- Header Section -->
   <header class="bg-pink-600 text-white py-6 fixed top-0 w-full z-30 shadow-lg">
     <div class="container mx-auto flex justify-between items-center px-4">
-      <h1 class="text-3xl font-bold">Beauty Salon</h1>
+      <div>
+        <h1 class="text-3xl font-bold">All4Queens</h1>
+        <h5 class="text-cente text-[8px] italic">Beauty Salon</h5>
+      </div>  
       <nav class="relative">
         <button onclick="add()" id="menu-toggle" class="text-white lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="size-8">
@@ -50,9 +53,9 @@
     <!-- Hero Section -->
     <section class="bg-pink-400 text-white py-44 text-center">
       <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold mb-4">Welcome to Our Beauty Salon</h2>
+        <h2 class="text-4xl font-bold mb-4">Welcome to All4Queens</h2>
         <p class="text-lg mb-8">Your go-to destination for premium nail care, stunning braids, and glamorous lashes in Pretoria.</p>
-        <a href="#services" class="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold hover:bg-pink-100">Explore Our Services</a>
+        <a href="#services" class="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold hover:bg-pink-300 hover:text-black">Explore Our Services</a>
       </div>
     </section>
 
@@ -61,39 +64,38 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
         <div class="flex justify-center mb-8">
+           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="all">All Services</button>
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="nails">Nails</button>
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="braids">Braids</button>
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
-          <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="all">All Services</button>
         </div>
-        <div id="service-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          <!-- Nails -->
-          <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="nails">
-            <img src="https://via.placeholder.com/300x200" alt="Nail Service" class="w-full h-32 object-cover rounded-t-lg mb-4">
+        <div id="service-list" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+         
+          <!-- <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="nails">
+            <img src="/database/nail1.jpg" alt="Nail Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
             <h3 class="text-xl font-semibold mb-2">Classic Manicure</h3>
             <p class="text-gray-700 mb-4">A classic manicure with a touch of elegance.</p>
             <p class="text-pink-600 font-bold">$30</p>
           </div>
           <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="nails">
-            <img src="https://via.placeholder.com/300x200" alt="Nail Service" class="w-full h-32 object-cover rounded-t-lg mb-4">
+            <img src="/database/nail2.jpg" alt="Nail Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
             <h3 class="text-xl font-semibold mb-2">Gel Nails</h3>
             <p class="text-gray-700 mb-4">Long-lasting gel nails for a perfect finish.</p>
             <p class="text-pink-600 font-bold">$50</p>
           </div>
-          <!-- Braids -->
+          
           <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="braids">
-            <img src="https://via.placeholder.com/300x200" alt="Braids Service" class="w-full h-32 object-cover rounded-t-lg mb-4">
+            <img src="https://via.placeholder.com/300x200" alt="Braids Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
             <h3 class="text-xl font-semibold mb-2">Box Braids</h3>
             <p class="text-gray-700 mb-4">Stylish and versatile box braids.</p>
             <p class="text-pink-600 font-bold">R70</p>
           </div>
           <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="braids">
-            <img src="https://via.placeholder.com/300x200" alt="Braids Service" class="w-full h-32 object-cover rounded-t-lg mb-4">
+            <img src="https://via.placeholder.com/300x200" alt="Braids Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
             <h3 class="text-xl font-semibold mb-2">Cornrows</h3>
             <p class="text-gray-700 mb-4">Neat and professional cornrows.</p>
             <p class="text-pink-600 font-bold">$60</p>
           </div>
-          <!-- Lashes -->
           <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="lashes">
             <img src="https://via.placeholder.com/300x200" alt="Lashes Service" class="w-full h-32 object-cover rounded-t-lg mb-4">
             <h3 class="text-xl font-semibold mb-2">Classic Lashes</h3>
@@ -105,7 +107,7 @@
             <h3 class="text-xl font-semibold mb-2">Volume Lashes</h3>
             <p class="text-gray-700 mb-4">Fuller and more voluminous lash extensions.</p>
             <p class="text-pink-600 font-bold">$100</p>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -142,6 +144,7 @@
   </footer>
 
   <!-- JavaScript -->
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
+  <script type="module" src="./database/index.js"></script>
 </body>
 </html>
