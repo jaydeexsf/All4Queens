@@ -1,23 +1,3 @@
-// import sercviceData from "./database/index.js";
-
-// import sercviceData from "./database";
-// document.addEventListener('DOMContentLoaded', () => {
-//   const all = document.getElementById('All');
-//   const category_btn = document.querySelectorAll('.category-btn');
-
-//   category_btn.forEach((btn)=> {
-//     btn.addEventListener('click', () => {
-//       const category = btn.getAttribute('data-category');
-//     if (btn.getAttribute('data-category') === category) {
-//       btn.style.backgroundColor = 'red';
-//     } else {
-//       btn.style.backgroundColor = "gray";
-//       btn.style.color = 'black';
-//     }
-//   })
-// });
-// })
-
 document.addEventListener('DOMContentLoaded', () => {
   const all = document.getElementById('All');
   const category_btn = document.querySelectorAll('.category-btn');
@@ -42,21 +22,44 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// const menu = document.querySelectorAll('#menu li');
 
+// function navtoggle(menu) {
+//   if (menu.classList.contains('underline') ) {
+//     menu.classList.remove('underline')
+//   } else {
+//     menu.classList.add('underline');
+//   }
+// }
 
-  //   setInterval(function(){
-  //     all.click();
-  // },9000); 
-
-
-  // class Node {
-  //   constructor (data) {
-  //     this.data.next = '',
-  //     data.head = ''
-  //   }
-  // }
-
+// menu.forEach((menu) => {
+//   menu.addEventListener('click', ()=> {
+//     console.log("yeppp");
+//   navtoggle(menu)
+//    })
+//   })
+// })
   
+const menuItems = document.querySelectorAll('#menu li');
+let currentlyUnderlined = null; // To keep track of the currently underlined item
+
+function navToggle(item) {
+  if (currentlyUnderlined) {
+    currentlyUnderlined.classList.remove('underline'); // Remove underline from the previously selected item
+  }
+  item.classList.add('underline'); 
+  item.classList.add('underline-offset-4')
+  item.classList.add('decoration-4')
+  currentlyUnderlined = item; // Update the reference to the currently underlined item
+}
+
+menuItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    console.log("yeppp");
+    navToggle(item);
+  });
+});
+
 
   const cancel = document.getElementById('cancel');
 
