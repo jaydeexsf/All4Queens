@@ -64,7 +64,7 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
         <div class="flex justify-center mb-8">
-           <button id="All" class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="all">All Services</button>
+           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="All">All Services</button>
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="nails">Nails</button>
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="braids">Braids</button>
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
@@ -165,13 +165,18 @@
       const braidsData = servicesData.filter((data)=> data.category === "braids")
       const nailsData = servicesData.filter((data)=> data.category === "nails")
       const lashesData = servicesData.filter((data)=> data.category === "lashes")
+      const allData = servicesData.filter((data)=> data);
       
         let filteredData;
+        // have to define the catb whci is category under the filtered data
         let catbtn = button.getAttribute('data-category');
+        console.log(allData)
+        console.log(lashesData)
+        console.log(nailsData)
 
       switch ( catbtn ) {
         case  "All": 
-          filteredData = servicesData;
+          filteredData = allData;
           break;
         case "braids":
           filteredData = braidsData;  
@@ -195,8 +200,6 @@
                  <p class="text-pink-600 font-bold">R${data.price}</p>
              </div>
          `).join('');
-
-         console.log(filteredData)
     })
   })
  }

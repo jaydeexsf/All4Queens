@@ -1,8 +1,6 @@
 // import sercviceData from "./database/index.js";
 
 // import sercviceData from "./database";
-const all = document.getElementById('All');
-
 document.addEventListener('DOMContentLoaded', () => {
   
 // for (let i = 0; i <10 ; i++) {
