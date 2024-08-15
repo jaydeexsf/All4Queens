@@ -57,7 +57,7 @@
       <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold mb-4">Welcome to All4Queens</h2>
         <p class="text-lg mb-8">Your go-to destination for premium nail care, stunning braids, and glamorous lashes in Pretoria.</p>
-        <a href="#services" class="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold hover:bg-pink-300 hover:text-black">Explore Our Services</a>
+        <a href="#services" class="bg-white text-pink-600 px-6 py-3 rounded-lg font-semibold transition duration-[0.6s] hover:bg-pink-300 hover:text-black">Explore Our Services</a>
       </div>
     </section>
 
@@ -66,10 +66,10 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
         <div class="flex justify-center mb-8">
-           <button id="All" class="category-btn px-4 py-[6px] mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="All">All</button>
-          <button class="category-btn px-4 py-[1px] mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="nails">Nails</button>
-          <button class="category-btn px-4 py-[1px] mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="braids">Braids</button>
-          <button class="category-btn px-4 py-[1px] mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
+           <button id="All" class="category-btn px-4 py-[6px] mx-2 bg-[#be185d] text-white rounded-lg hover:bg-pink-700" data-category="All">All</button>
+          <button class="category-btn px-4 py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="nails">Nails</button>
+          <button class="category-btn px-4 py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="braids">Braids</button>
+          <button class="category-btn px-4 py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
         </div>
 
         <div id="service-list" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.log("Category not found");
                         filteredData = [];
                 }
+
 
                 displayData(filteredData);
             });
