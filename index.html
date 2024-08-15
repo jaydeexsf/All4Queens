@@ -71,44 +71,15 @@
         </div>
 
         <div id="service-list" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-         
-          <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="nails">
+<!--       the sample html for the whole data of service i used it in the script/javscript   -->
+
+           <!-- <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="nails">
             <img src="./database/images/acrylic-nails.jpg" alt="Nail Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
             <h3 class="text-xl font-semibold mb-2">Classic Manicure</h3>
             <p class="text-gray-700 mb-4">A classic manicure with a touch of elegance.</p>
             <p class="text-pink-600 font-bold">$30</p>
-          </div>
-          <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="nails">
-            <img src="/database/nail2.jpg" alt="Nail Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
-            <h3 class="text-xl font-semibold mb-2">Gel Nails</h3>
-            <p class="text-gray-700 mb-4">Long-lasting gel nails for a perfect finish.</p>
-            <p class="text-pink-600 font-bold">$50</p>
-          </div>
-          
-          <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="braids">
-            <img src="https://via.placeholder.com/300x200" alt="Braids Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
-            <h3 class="text-xl font-semibold mb-2">Box Braids</h3>
-            <p class="text-gray-700 mb-4">Stylish and versatile box braids.</p>
-            <p class="text-pink-600 font-bold">R70</p>
-          </div>
-          <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="braids">
-            <img src="https://via.placeholder.com/300x200" alt="Braids Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
-            <h3 class="text-xl font-semibold mb-2">Cornrows</h3>
-            <p class="text-gray-700 mb-4">Neat and professional cornrows.</p>
-            <p class="text-pink-600 font-bold">$60</p>
-          </div>
-          <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="lashes">
-            <img src="https://via.placeholder.com/300x200" alt="Lashes Service" class="w-full h-32 object-cover rounded-t-lg mb-4">
-            <h3 class="text-xl font-semibold mb-2">Classic Lashes</h3>
-            <p class="text-gray-700 mb-4">Beautiful classic lashes for a natural look.</p>
-            <p class="text-pink-600 font-bold">$80</p>
-          </div>
-          <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="lashes">
-            <img src="https://via.placeholder.com/300x200" alt="Lashes Service" class="w-full h-32 object-cover rounded-t-lg mb-4">
-            <h3 class="text-xl font-semibold mb-2">Volume Lashes</h3>
-            <p class="text-gray-700 mb-4">Fuller and more voluminous lash extensions.</p>
-            <p class="text-pink-600 font-bold">$100</p>
-          </div>
+          </div> -->
+
         </div>
       </div>
     </section>
@@ -148,65 +119,127 @@
   <script src="script.js"></script>
   <script type="module" src="./database/index.js"></script>
   <script type="module">
-     import servicesData from './database/index.js';
+    ///////////////////////////////////
+    // this code i was helped to make it effecient my original code which is working but not efficeint is commented beloow
+    // but i leaned a ton from this
 
-    document.addEventListener('DOMContentLoaded', () => {
+    import servicesData from './database/index.js';
+
+document.addEventListener('DOMContentLoaded', () => {
     const servicelist = document.getElementById('service-list');
-        // Generate HTML for the service item
     const buttons = document.querySelectorAll('.category-btn');
-    const all = document.getElementById('All');
+    const allButton = document.getElementById('All');
 
- function displayData() {
+    function displayData(data) {
+        servicelist.innerHTML = data.map((service) => `
+            <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="${service.category}">
+                <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
+                <h3 class="text-xl font-semibold mb-2">${service.name}</h3>
+                <p class="text-gray-700 mb-4">${service.description}</p>
+                <p class="text-pink-600 font-bold">R${service.price.toFixed(2)}</p>
+            </div>
+        `).join('');
+    }
 
-  buttons.forEach((button)=> {
-      button.addEventListener('click', () => {
-      const category = button.getAttribute('data-category');
+    function handleButtonClick() {
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
 
-      const braidsData = servicesData.filter((data)=> data.category === "braids")
-      const nailsData = servicesData.filter((data)=> data.category === "nails")
-      const lashesData = servicesData.filter((data)=> data.category === "lashes")
-      const allData = servicesData.filter((data)=> data);
-      
-        let filteredData;
-        // have to define the catb whci is category under the filtered data
-        let catbtn = button.getAttribute('data-category');
-        console.log(allData)
-        console.log(lashesData)
-        console.log(nailsData)
-        all.click();
+                let filteredData;
+                switch (category) {
+                    case "All":
+                        filteredData = servicesData;
+                        break;
+                    case "braids":
+                        filteredData = servicesData.filter(service => service.category === "braids");
+                        break;
+                    case "nails":
+                        filteredData = servicesData.filter(service => service.category === "nails");
+                        break;
+                    case "lashes":
+                        filteredData = servicesData.filter(service => service.category === "lashes");
+                        break;
+                    default:
+                        console.log("Category not found");
+                        filteredData = [];
+                }
 
-      switch ( catbtn ) {
-        case  "All": 
-          filteredData = allData;
-          break;
-        case "braids":
-          filteredData = braidsData;  
-          break;
-        case "nails": 
-          filteredData = nailsData;
-          break;
-        case "lashes":
-          filteredData = lashesData;
-          break;
-        default :
-          console.log("dat i snot found or not category is selected")  
-      }  
+                displayData(filteredData);
+            });
+        });
+    }
 
-      servicelist.innerHTML =  filteredData.map((data)=> 
-          `
-             <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="${data.category}">
-                 <img src="${data.imgPath}" alt="${data.name} Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
-                 <h3 class="text-xl font-semibold mb-2">${data.name}</h3>
-                 <p class="text-gray-700 mb-4">${data.description}</p>
-                 <p class="text-pink-600 font-bold">R${data.price}</p>
-             </div>
-         `).join('');
-    })
-  })
- }
- 
- displayData()
+    // Display all data when the page loads
+    displayData(servicesData);
+
+    // Set up button click handling
+    handleButtonClick();
 });
+
+
+    /////////////////////////////////
+
+
+//      import servicesData from './database/index.js';
+
+//     document.addEventListener('DOMContentLoaded', () => {
+//     const servicelist = document.getElementById('service-list');
+//         // Generate HTML for the service item
+//     const buttons = document.querySelectorAll('.category-btn');
+//     const all = document.getElementById('All');
+
+//  function displayData() {
+
+//   buttons.forEach((button)=> {
+//       button.addEventListener('click', () => {
+//       const category = button.getAttribute('data-category');
+
+//       const braidsData = servicesData.filter((data)=> data.category === "braids")
+//       const nailsData = servicesData.filter((data)=> data.category === "nails")
+//       const lashesData = servicesData.filter((data)=> data.category === "lashes")
+//       const allData = servicesData.filter((data)=> data);
+      
+//         let filteredData;
+//         // have to define the catb whci is category under the filtered data
+//         let catbtn = button.getAttribute('data-category');
+//         console.log(allData)
+//         console.log(lashesData)
+//         console.log(nailsData)
+//         all.click();
+
+//       switch ( catbtn ) {
+//         case  "All": 
+//           filteredData = allData;
+//           break;
+//         case "braids":
+//           filteredData = braidsData;  
+//           break;
+//         case "nails": 
+//           filteredData = nailsData;
+//           break;
+//         case "lashes":
+//           filteredData = lashesData;
+//           break;
+//         default :
+//           console.log("dat i snot found or not category is selected")  
+//       }  
+
+//       servicelist.innerHTML =  filteredData.map((data)=> 
+//           `
+//              <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="${data.category}">
+//                  <img src="${data.imgPath}" alt="${data.name} Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
+//                  <h3 class="text-xl font-semibold mb-2">${data.name}</h3>
+//                  <p class="text-gray-700 mb-4">${data.description}</p>
+//                  <p class="text-pink-600 font-bold">R${data.price}</p>
+//              </div>
+//          `).join('');
+//     })
+//   })
+//  }
+ 
+//  displayData()
+// });
 
 
   </script>
