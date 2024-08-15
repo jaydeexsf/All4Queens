@@ -2,15 +2,17 @@
 
 // import sercviceData from "./database";
 document.addEventListener('DOMContentLoaded', () => {
+  const all = document.getElementById('All');
   
 // for (let i = 0; i <10 ; i++) {
 //   if (all) {
 //   all.click();
-//   console.log('clicked')
+//   console.log()
 //   } else {
 //     console.log('problem')
 //   }
 // }
+// all.click();
 
   });
 
@@ -26,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   //     data.head = ''
   //   }
   // }
+
+  
 
   const cancel = document.getElementById('cancel');
 
