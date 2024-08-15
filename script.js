@@ -34,9 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const cancel = document.getElementById('cancel');
 
   function add() {
-    cancel.style.display = 'flex'
-  }
+  cancel.style.display = 'flex';
+
+  setTimeout(()=>{
+  window.document.addEventListener('click', () =>{
+    remove();
+  }, 100)
+})
+}
 
   function remove () {
     cancel.style.display = 'none';
   }
+
