@@ -15,7 +15,7 @@ const sercviceData = [
     },
     {
       "name": "French Manicure",
-      "category": "nails",
+      "category": "nail",
       "imgPath": "/images/french-manicure.jpg",
       "description": "Elegant and timeless French manicure with a natural look.",
       "price": 30.00

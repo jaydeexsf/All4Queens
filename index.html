@@ -64,7 +64,7 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
         <div class="flex justify-center mb-8">
-           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="all">All Services</button>
+           <button id="All" class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="all">All Services</button>
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="nails">Nails</button>
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="braids">Braids</button>
           <button class="category-btn px-4 py-2 mx-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
@@ -154,80 +154,54 @@
     const servicelist = document.getElementById('service-list');
         // Generate HTML for the service item
     const buttons = document.querySelectorAll('.category-btn');
-  
- let catbtn = "All";
+    const all = document.getElementById('All');
 
-    buttons.forEach((button)=> {
+ function displayData() {
+
+  buttons.forEach((button)=> {
       button.addEventListener('click', () => {
       const category = button.getAttribute('data-category');
-      const catbtn = button.getAttribute('data-category');
-      displaycatbdata();
-     console.log(catbtn)
+
+      const braidsData = servicesData.filter((data)=> data.category === "braids")
+      const nailsData = servicesData.filter((data)=> data.category === "nails")
+      const lashesData = servicesData.filter((data)=> data.category === "lashes")
+      
+        let filteredData;
+        let catbtn = button.getAttribute('data-category');
+
+      switch ( catbtn ) {
+        case  "All": 
+          filteredData = servicesData;
+          break;
+        case "braids":
+          filteredData = braidsData;  
+          break;
+        case "nails": 
+          filteredData = nailsData;
+          break;
+        case "lashes":
+          filteredData = lashesData;
+          break;
+        default :
+          console.log("dat i snot found or not category is selected")  
+      }  
+
+      servicelist.innerHTML =  filteredData.map((data)=> 
+          `
+             <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="${data.category}">
+                 <img src="${data.imgPath}" alt="${data.name} Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
+                 <h3 class="text-xl font-semibold mb-2">${data.name}</h3>
+                 <p class="text-gray-700 mb-4">${data.description}</p>
+                 <p class="text-pink-600 font-bold">R${data.price}</p>
+             </div>
+         `).join('');
+
+         console.log(filteredData)
     })
   })
-
-  displaycatbdata()
-
-  ///if not displaying dta probely remove th efunction
-   function displaycatbdata() {
-        if (catbtn === "All") {
-        servicelist.innerHTML = servicesData.map(data => `
-            <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="${data.category}">
-                <img src="${data.imgPath}" alt="${data.name} Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
-                <h3 class="text-xl font-semibold mb-2">${data.name}</h3>
-                <p class="text-gray-700 mb-4">${data.description}</p>
-                <p class="text-pink-600 font-bold">R${data.price}</p>
-            </div>
-        `).join('');
-          } else if (catbtn === "nails") {
-
-            servicelist.innerHTML = nailsData.map(data => `
-            <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="${data.category}">
-                <img src="${data.imgPath}" alt="${data.name} Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
-                <h3 class="text-xl font-semibold mb-2">${data.name}</h3>
-                <p class="text-gray-700 mb-4">${data.description}</p>
-                <p class="text-pink-600 font-bold">R${data.price}</p>
-            </div>
-        `).join('');
-
-          } else if (catbtn ==="braids") {
-
-            servicelist.innerHTML = braidsData.map(data => `
-            <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="${data.category}">
-                <img src="${data.imgPath}" alt="${data.name} Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
-                <h3 class="text-xl font-semibold mb-2">${data.name}</h3>
-                <p class="text-gray-700 mb-4">${data.description}</p>
-                <p class="text-pink-600 font-bold">R${data.price}</p>
-            </div>
-        `).join('');
-
-          } else if(catbtn === "lashes") {
-
-            servicelist.innerHTML = lashes.map(data => `
-            <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="${data.category}">
-                <img src="${data.imgPath}" alt="${data.name} Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
-                <h3 class="text-xl font-semibold mb-2">${data.name}</h3>
-                <p class="text-gray-700 mb-4">${data.description}</p>
-                <p class="text-pink-600 font-bold">R${data.price}</p>
-            </div>
-        `).join('');
-
-          }
-
-          // nails data
-        const nailsData = servicesData.filter((data)=> {
-           return data.category === "nails"
-        })
-        
-        //braids tdat
-        const braidsData = servicesData.filter((data)=> {
-            return data.category === "braids"
-        })
-
-        const lashes = servicesData.filter((data)=> {
-          return data.category === "lashes"
-        })
-      }
+ }
+ 
+ displayData()
 });
   </script>
 </body>
