@@ -21,31 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
-// const menu = document.querySelectorAll('#menu li');
-
-// function navtoggle(menu) {
-//   if (menu.classList.contains('underline') ) {
-//     menu.classList.remove('underline')
-//   } else {
-//     menu.classList.add('underline');
-//   }
-// }
-
-// menu.forEach((menu) => {
-//   menu.addEventListener('click', ()=> {
-//     console.log("yeppp");
-//   navtoggle(menu)
-//    })
-//   })
-// })
   
 const menuItems = document.querySelectorAll('#menu li');
-let currentlyUnderlined = null; // To keep track of the currently underlined item
+let currentlyUnderlined = null; // To keept track of the currently underlined item
 
 function navToggle(item) {
   if (currentlyUnderlined) {
-    currentlyUnderlined.classList.remove('underline'); // Remove underline from the previously selected item
+    currentlyUnderlined.classList.remove('underline');
   }
   item.classList.add('underline'); 
   item.classList.add('underline-offset-4')

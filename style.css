@@ -2,3 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.leftFF a {
+    text-decoration: underline;
+    color: rgba(180, 180, 180, 0.863);
+}
+
+.rightFF a {
+    text-decoration: underline;
+    color: rgba(180, 180, 180, 0.863);
+}
+
+.rightFF a:hover {
+    color: rgba(245, 196, 196, 0.961);
+}
+
+.leftFF a:hover {
+    color: rgba(245, 196, 196, 0.961);
+}
