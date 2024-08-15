@@ -41,10 +41,11 @@
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>                  
         </button>
-        <li class="hover:text-pink-950 w-[100vw] ml-[-2.4vw] px-8 hover:cursor-pointer hover:bg-white py-4"><a href="#nails" class="">Nails</a></li>
-        <li  class="w-[100vw]  hover:text-pink-300 ml-[-2.4vw] px-8 hover:cursor-pointer hover:bg-black py-4"><a href="#braids" class="">Braids</a></li>
-        <li  class="w-[100vw]  hover:text-pink-300 ml-[-2.4vw] px-8 hover:cursor-pointer hover:bg-black py-4 "><a href="#lashes" class="">Lashes</a></li>
-        <li  class="w-[100vw]  hover:text-pink-300 ml-[-2.4vw] px-8 hover:cursor-pointer hover:bg-black py-4 "><a href="#contact" class="">Contact</a></li>
+        <a href="#home" class=""> <li class="hover:text-pink-300 w-[100vw] ml-[-2.4vw] px-8 hover:cursor-pointer hover:bg-white py-4">Home</li></a>
+        <a href="#services" class=""><li  class="w-[100vw]  hover:text-pink-300 ml-[-2.4vw] px-8 hover:cursor-pointer hover:bg-white py-4">Services</li></a>
+        <a href="#contact" class=""><li  class="w-[100vw]  hover:text-pink-300 ml-[-2.4vw] px-8 hover:cursor-pointer hover:bg-white py-4 ">Contact</li></a>
+        <a href="#location" class=""><li class="w-[100vw]  hover:text-pink-300 ml-[-2.4vw] px-8 hover:cursor-pointer hover:bg-white py-4 ">Location</li></a>
+        <a target="_" href="./admin.html"><button class="bg-pink-800 text-md py-2 px-4 rounded-3xl">Admin</button></a>
       </ul>
     </div>
   </header>
@@ -153,12 +154,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayData(data) {
         servicelist.innerHTML = data.map((service) => `
-            <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="${service.category}">
-                <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
-                <h3 class="text-xl font-semibold mb-2">${service.name}</h3>
-                <p class="text-gray-700 mb-4">${service.description}</p>
-                <p class="text-pink-600 font-bold">R${service.price.toFixed(2)}</p>
-            </div>
+            <div class="service-item bg-white p-0 rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
+                <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-[300px] object-cover rounded-t-lg mb-0">
+                <div class="bg-gray-200 p-3"><h3 class="text-xl font-semibold mb-2">${service.name}</h3>
+                  <p class="text-gray-700 mb-4">${service.description}</p>
+                  <p class="text-pink-600 font-bold">R${service.price.toFixed(2)}</p>
+                </div>  
+              </div>
         `).join('');
     }
 
