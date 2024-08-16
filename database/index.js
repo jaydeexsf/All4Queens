@@ -4,7 +4,9 @@ const sercviceData = [
       "category": "nails",
       "imgPath": "./database/images/classic-manicure.jpg",
       "description": "A traditional manicure with nail shaping, cuticle care, and polish.",
-      "price": 25.00
+      "price": 25.00,
+      "oldPrice": 300,
+      "special": 20
     },
     {
       "name": "Gel Nails",
@@ -205,5 +207,4 @@ const sercviceData = [
   ]
   
   export default sercviceData;
-
 
