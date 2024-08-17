@@ -63,22 +63,11 @@
 
     <section id="special">
           
-      <div class="max-w-lg mx-auto my-10 p-6 ">
-        <h2 class="text-3xl font-bold  text-center mb-4">Special Offers</h2>
-        <div id="offers-container" class="relative bg-gray-700 overflow-hidden h-96">
-          <div id="offers" class="flex transition-transform duration-700">
-            <div class="offer w-full flex-shrink-0 p-4">
-              <h3 class="text-xl font-medium">Offer 1</h3>
-              <p class="text-gray-600">Discount on haircuts.</p>
-            </div>
-            <div class="offer w-full flex-shrink-0 p-4">
-              <h3 class="text-xl font-medium">Offer 2</h3>
-              <p class="text-gray-600">Free manicure with pedicure.</p>
-            </div>
-            <div class="offer w-full flex-shrink-0 p-4">
-              <h3 class="text-xl font-medium">Offer 3</h3>
-              <p class="text-gray-600">20% off on all products.</p>
-            </div>
+      <div class="py-6  bg-pink-300 ">
+        <h2 class="text-3xl font-bold text-white  text-center mb-4">Special Offers</h2>
+        <div id="offers-container" class="relative overflow-hidden">
+          <div id="offers" class="flex gap-4 transition-transform p-12 duration-700">
+           
           </div>
         </div>
         <div class="flex justify-center mt-4">
@@ -265,8 +254,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set up button click handling
     handleButtonClick();
-});
 
+
+ function specialdells() {
+    const special = document.getElementById('offers');
+    const specialData = servicesData.filter((data) => data.newPrice )
+
+    special.innerHTML = specialData.map((service) => {
+    
+      const wasBefore = (1 - (service.newPrice / service.price)) * 100;
+      console.log('yea')
+    
+      return `
+          <div class="offer bg-white w-[95%] flex-shrink-0 max-w-[600px] p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
+                <div class="relative">    
+                   <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-[300px] object-cover rounded-t-lg mb-0">
+                   <span class="absolute top-3 left-3 ">${service.newPrice ? `<span class="bg-red-700 w-14 h-16 text-[12px] flex justify-center items-center rounded font-bold">${wasBefore.toFixed()}%<br>OFF</span>` : ``}</span>
+                </div>
+                <div class="bg-gray-200 p-3"><h3 class="text-xl font-semibold mb-2">${service.name}</h3>
+                  <p class="text-gray-700 mb-4">${service.description}</p>
+                  <p class="text-pink-600 flex items-center gap-3 font-bold">R${ service.newPrice ? service.newPrice : service.price.toFixed(2)} ${service.newPrice ? `<span class="text-gray-600 decoration-[1.5px] line-through text-[12px]">R${service.price}</span>` : ``} </p>
+                </div>  
+          </div>
+              `
+    }).join('');
+
+  }
+
+  specialdells();
+});
 
     /////////////////////////////////
 
