@@ -61,12 +61,14 @@
       </div>
     </section>
 
+<!-- im not sure if i should fix this -->
+
     <section id="special">
           
-      <div class="py-6  bg-pink-300 relative">
+      <div class="py-6  bg-pink-300 relative hidden">
         <h2 class="text-3xl font-bold text-white text-center mt-8">Special Offers</h2>
         <div id="offers-container" class="relative w-[100vw] overflow-hidden">
-          <div id="offers" class="flex gap-4 w- transition-transform p-8 duration-700">
+          <div id="offers" class="flex gap-4 w-[600px] transition-transform p-8 duration-700">
            
           </div>
         </div>
@@ -263,70 +265,118 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set up button click handling
     handleButtonClick();
 
- function specialdells() {
+    function specialdells() {
     const special = document.getElementById('offers');
-    const specialData = servicesData.filter((data) => data.newPrice )
+    const specialData = servicesData.filter((data) => data.newPrice );
 
     special.innerHTML = specialData.map((service) => {
+        const wasBefore = (1 - (service.newPrice / service.price)) * 100;
     
-      const wasBefore = (1 - (service.newPrice / service.price)) * 100;
-      console.log('yea')
-    
-      return `
-          <div class="offer bg-white w-[95%] flex-shrink-0 max-w-[600px] p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
+        return `
+          <div class="offer bg-white w-full max-w-[600px] flex-shrink-0 p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
                 <div class="relative">    
                    <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-[300px] object-cover rounded-t-lg mb-0">
                    <span class="absolute top-3 left-3 ">${service.newPrice ? `<span class="bg-red-700 w-14 h-16 text-[12px] flex justify-center items-center rounded font-bold">${wasBefore.toFixed()}%<br>OFF</span>` : ``}</span>
                 </div>
                 <div class="bg-gray-200 p-3"><h3 class="text-xl font-semibold mb-2">${service.name}</h3>
                   <p class="text-gray-700 mb-4">${service.description}</p>
-                  <p class="text-pink-600 flex items-center gap-3 font-bold">R${ service.newPrice ? service.newPrice : service.price.toFixed(2)} ${service.newPrice ? `<span class="text-gray-600 decoration-[1.5px] line-through text-[12px]">R${service.price}</span>` : ``} </p>
+                  <p class="text-pink-600 flex items-center gap-3 font-bold">R${ service.newPrice ? service.newPrice.toFixed(2) : service.price.toFixed(2)} ${service.newPrice ? `<span class="text-gray-600 decoration-[1.5px] line-through text-[12px]">R${service.price.toFixed(2)}</span>` : ``} </p>
                 </div>  
           </div>
-              `
+        `;
     }).join('');
+}
 
-  }
+specialdells();
+    const offers = document.getElementById('offers');
+    const offerCount = document.querySelectorAll('.offer').length;
+    let currentIndex = 0;
 
-  specialdells();
-
-  const offers = document.getElementById('offers');
-  const offerCount = document.querySelectorAll('.offer').length;
-  let currentIndex = 0;
-
-  // if (currentIndex === 0.7) {
-  //     currentIndex = 0
-  // }
-
-  function showOffer(index) {
-    offers.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  function nextOffer() {
-    if (currentIndex > 0.8) {
-      currentIndex = 0.8
-  }
-    currentIndex = (currentIndex + 0.85) % offerCount;
-    showOffer(currentIndex);
-
-    console.log(currentIndex)
-  }
-
-  function prevOffer() {
-    if (currentIndex > 0.8) {
-      currentIndex = 0.8
-  }
-    if (currentIndex > 0) {
-    currentIndex = (currentIndex - 0.8 + offerCount) % offerCount;
-    showOffer(currentIndex);
+    function showOffer(index) {
+        offers.style.transform = `translateX(-${index * 100}%)`;
     }
-  }
 
-  document.getElementById('nextBtn').addEventListener('click', nextOffer);
-  document.getElementById('prevBtn').addEventListener('click', prevOffer);
+    function nextOffer() {
+        currentIndex = (currentIndex + 0.8) % offerCount;
+        showOffer(currentIndex);
+    }
 
-  setInterval(nextOffer, 30000);
+    function prevOffer() {
+        currentIndex = (currentIndex - 0.8 + offerCount) % offerCount;
+        showOffer(currentIndex);
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', nextOffer);
+    document.getElementById('prevBtn').addEventListener('click', prevOffer);
+
+    setInterval(nextOffer, 30000);
 });
+
+
+//  function specialdells() {
+//     const special = document.getElementById('offers');
+//     const specialData = servicesData.filter((data) => data.newPrice )
+
+//     special.innerHTML = specialData.map((service) => {
+    
+//       const wasBefore = (1 - (service.newPrice / service.price)) * 100;
+//       console.log('yea')
+    
+//       return `
+//           <div class="offer bg-white w-[95%] flex-shrink-0 max-w-[600px] p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
+//                 <div class="relative">    
+//                    <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-[300px] object-cover rounded-t-lg mb-0">
+//                    <span class="absolute top-3 left-3 ">${service.newPrice ? `<span class="bg-red-700 w-14 h-16 text-[12px] flex justify-center items-center rounded font-bold">${wasBefore.toFixed()}%<br>OFF</span>` : ``}</span>
+//                 </div>
+//                 <div class="bg-gray-200 p-3"><h3 class="text-xl font-semibold mb-2">${service.name}</h3>
+//                   <p class="text-gray-700 mb-4">${service.description}</p>
+//                   <p class="text-pink-600 flex items-center gap-3 font-bold">R${ service.newPrice ? service.newPrice : service.price.toFixed(2)} ${service.newPrice ? `<span class="text-gray-600 decoration-[1.5px] line-through text-[12px]">R${service.price}</span>` : ``} </p>
+//                 </div>  
+//           </div>
+//               `
+//     }).join('');
+
+//   }
+
+//   specialdells();
+
+//   const offers = document.getElementById('offers');
+//   const offerCount = document.querySelectorAll('.offer').length;
+//   let currentIndex = 0;
+
+//   // if (currentIndex === 0.7) {
+//   //     currentIndex = 0
+//   // }
+
+//   function showOffer(index) {
+//     offers.style.transform = `translateX(-${index * 100}%)`;
+//   }
+
+//   function nextOffer() {
+//     if (currentIndex > 0.8) {
+//       currentIndex = 0.8
+//   }
+//     currentIndex = (currentIndex + 0.9) % offerCount;
+//     showOffer(currentIndex);
+
+//     console.log(currentIndex)
+//   }
+
+//   function prevOffer() {
+//     if (currentIndex > 0.8) {
+//       currentIndex = 0.8
+//   }
+//     if (currentIndex > 0) {
+//     currentIndex = (currentIndex - 0.8 + offerCount) % offerCount;
+//     showOffer(currentIndex);
+//     }
+//   }
+
+//   document.getElementById('nextBtn').addEventListener('click', nextOffer);
+//   document.getElementById('prevBtn').addEventListener('click', prevOffer);
+
+//   setInterval(nextOffer, 30000);
+// });
 
     /////////////////////////////////
 
