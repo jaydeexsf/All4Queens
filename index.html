@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const specialData = servicesData.filter((data) => data.newPrice );
 
     special.innerHTML = specialData.map((service) => {
-        const wasBefore = (1 - (service.newPrice / service.price)) * 100;
+        const wasBefore = (service.newPrice / service.price) * 100;
     
         return `
           <div class="offer bg-white w-full max-w-[600px] flex-shrink-0 p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
