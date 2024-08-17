@@ -4,8 +4,8 @@ const sercviceData = [
       "category": "nails",
       "imgPath": "./database/images/classic-manicure.jpg",
       "description": "A traditional manicure with nail shaping, cuticle care, and polish.",
-      "price": 25.00,
-      "oldPrice": 695,
+      "price": 849.00,
+      "newPrice": 695,
     },
     {
       "name": "Gel Nails",
@@ -47,9 +47,8 @@ const sercviceData = [
       "category": "nails",
       "imgPath": "./database/images/spa-pedicure.jpg",
       "description": "A relaxing pedicure with exfoliation, massage, and polish.",
-      "price": 40.00,
-      "oldPrice": 300,
-      "special": 20
+      "price":1600.00,
+      "newPrice": 300,
     },
     {
       "name": "Dip Powder Nails",
@@ -70,8 +69,8 @@ const sercviceData = [
       "category": "nails",
       "imgPath": "./database/images/pedicure-gel.jpg",
       "description": "Pedicure with long-lasting gel polish for a polished look.",
-      "price": 50.00,
-      "oldPrice": 5500,
+      "price": 790.00,
+      "newPrice": 499.99,
       "special": 20
     },
     {
