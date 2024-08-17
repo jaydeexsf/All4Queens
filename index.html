@@ -294,18 +294,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const offerCount = document.querySelectorAll('.offer').length;
   let currentIndex = 0;
 
+  // if (currentIndex === 0.7) {
+  //     currentIndex = 0
+  // }
+
   function showOffer(index) {
     offers.style.transform = `translateX(-${index * 100}%)`;
   }
 
   function nextOffer() {
-    currentIndex = (currentIndex + 1) % offerCount;
+    if (currentIndex > 0.8) {
+      currentIndex = 0.8
+  }
+    currentIndex = (currentIndex + 0.85) % offerCount;
     showOffer(currentIndex);
+
+    console.log(currentIndex)
   }
 
   function prevOffer() {
-    currentIndex = (currentIndex - 1 + offerCount) % offerCount;
+    if (currentIndex > 0.8) {
+      currentIndex = 0.8
+  }
+    if (currentIndex > 0) {
+    currentIndex = (currentIndex - 0.8 + offerCount) % offerCount;
     showOffer(currentIndex);
+    }
   }
 
   document.getElementById('nextBtn').addEventListener('click', nextOffer);
