@@ -1,4 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  const offers = document.getElementById('offers');
+  const offerCount = document.querySelectorAll('.offer').length;
+  let currentIndex = 0;
+
+  function showOffer(index) {
+    offers.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function nextOffer() {
+    currentIndex = (currentIndex + 1) % offerCount;
+    showOffer(currentIndex);
+  }
+
+  function prevOffer() {
+    currentIndex = (currentIndex - 1 + offerCount) % offerCount;
+    showOffer(currentIndex);
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', nextOffer);
+  document.getElementById('prevBtn').addEventListener('click', prevOffer);
+
+  setInterval(nextOffer, 30000); // code for special ends here
+
   const all = document.getElementById('All');
   const category_btn = document.querySelectorAll('.category-btn');
 
@@ -13,9 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (button.getAttribute('data-category') === category) {
           button.style.backgroundColor = '#be185d';
           button.style.color = 'white';
+          button.style.border = '1px solid rgb(190 24 93)';
         } else {
           button.style.backgroundColor = '#ec4899';
           button.style.color = '#111827';
+          button.style.border = 'none'
         }
       });
     });
@@ -58,4 +84,3 @@ menuItems.forEach((item) => {
   function remove () {
     cancel.style.display = 'none';
   }
-
