@@ -1,27 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // const offers = document.getElementById('offers');
-  // const offerCount = document.querySelectorAll('.offer').length;
-  // let currentIndex = 0;
-
-  // function showOffer(index) {
-  //   offers.style.transform = `translateX(-${index * 100}%)`;
-  // }
-
-  // function nextOffer() {
-  //   currentIndex = (currentIndex + 1) % offerCount;
-  //   showOffer(currentIndex);
-  // }
-
-  // function prevOffer() {
-  //   currentIndex = (currentIndex - 1 + offerCount) % offerCount;
-  //   showOffer(currentIndex);
-  // }
-
-  // document.getElementById('nextBtn').addEventListener('click', nextOffer);
-  // document.getElementById('prevBtn').addEventListener('click', prevOffer);
-
-  // setInterval(nextOffer, 30000); // code for special ends here
+  // const swiper = new Swiper('.swiper', {
+  //   // Optional parameters
+  //   direction: 'horizontal',
+  //   loop: true,
+  
+  //   // If we need pagination
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //   },
+  
+  //   // Navigation arrows
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   },
+  
+  //   // And if we need scrollbar
+  //   scrollbar: {
+  //     el: '.swiper-scrollbar',
+  //   },
+  // });
 
   const all = document.getElementById('All');
   const category_btn = document.querySelectorAll('.category-btn');
@@ -84,3 +83,4 @@ menuItems.forEach((item) => {
   function remove () {
     cancel.style.display = 'none';
   }
+
