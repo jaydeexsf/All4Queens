@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* improrting the fonts  */
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+* {
+    /* font-family: "Almendra", serif; */
+     font-family: "Roboto", sans-serif;
+     font-weight: 400;
+     font-style: normal;
+}
+
 .leftFF a {
     text-decoration: underline;
     color: rgba(180, 180, 180, 0.863);
@@ -19,3 +32,13 @@
 .leftFF a:hover {
     color: rgba(245, 196, 196, 0.961);
 }
+
+/* #homee {
+    background: url('./database/images/banner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    color: rgba(255, 0, 183, 0.789);
+}
+ */

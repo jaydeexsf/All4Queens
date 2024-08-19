@@ -9,6 +9,10 @@
   <title>Beauty Salon - Pretoria</title>
   <link href="style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-sans antialiased bg-gray-100">
@@ -51,9 +55,9 @@
   </header>
 
   <!-- Main Content -->
-  <main id="home" class="pt-16 py-6">
+  <main id="home" class="ggs pt-16 py-6">
     <!-- Hero Section -->
-    <section class="bg-pink-400 text-white py-44  sm:py-52 lg:py-60 text-center">
+    <section id="homee" class="bg-pink-400 text-white py-44 sm:py-52 lg:py-60 text-center">
       <div class="container mx-auto px-4">
         <h2 class="text-4xl font-bold mb-4">Welcome to All4Queens</h2>
         <p class="text-lg mb-8">Your go-to destination for premium nail care, stunning braids, and glamorous lashes in Pretoria.</p>
@@ -67,7 +71,7 @@
           
       <div class="py-6  bg-pink-300 relative hidden">
         <h2 class="text-3xl font-bold text-white text-center mt-8">Special Offers</h2>
-        <div id="offers-container" class="relative w-[100vw] overflow-hidden">
+        <div id="offers-container" class="relative w-[100vw]">
           <div id="offers" class="flex gap-4 w-[600px] transition-transform p-8 duration-700">
            
           </div>
@@ -93,10 +97,10 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
         <div class="flex justify-center mb-8">
-           <button id="All" class="category-btn px-4 py-[6px] mx-2 bg-[#be185d] text-white rounded-lg hover:bg-pink-700" data-category="All">All</button>
-          <button class="category-btn px-4 py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="nails">Nails</button>
-          <button class="category-btn px-4 py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="braids">Braids</button>
-          <button class="category-btn px-4 py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
+           <button id="All" class="category-btn  text-[12px] font-semibold px-4 py-[6px] mx-2 bg-black border border-black text-pink-600 border rounded-lg" data-category="All">All</button>
+          <button class="category-btn px-4 text-[12px] font-semibold px-4 py-[6px] py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="nails">Nails</button>
+          <button class="category-btn px-4 text-[12px] font-semibold px-4 py-[6px] py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="braids">Braids</button>
+          <button class="category-btn px-4 text-[12px] font-semibold px-4 py-[6px] py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
         </div>
 
         <div id="service-list" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
@@ -169,6 +173,7 @@
   <!-- JavaScript -->
   <script src="script.js"></script>
   <script type="module" src="./database/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script type="module">
     ///////////////////////////////////
     // this code i was helped to make it effecient my original code which is working but not efficeint is commented beloow
@@ -213,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayData(data) {
         servicelist.innerHTML = data.map((service) => {
 
-          const wasBefore = (service.newPrice / service.price) * 100;
+          const wasBefore = (1 - (service.newPrice / service.price)) * 100;
 
          return  `
               <div class="service-item bg-white p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
@@ -270,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const specialData = servicesData.filter((data) => data.newPrice );
 
     special.innerHTML = specialData.map((service) => {
-        const wasBefore = (service.newPrice / service.price) * 100;
+        const wasBefore =(1 - (service.newPrice / service.price)) * 100;
     
         return `
           <div class="offer bg-white w-full max-w-[600px] flex-shrink-0 p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
@@ -287,29 +292,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
 }
 
-specialdells();
-    const offers = document.getElementById('offers');
-    const offerCount = document.querySelectorAll('.offer').length;
-    let currentIndex = 0;
+// specialdells();
+//     const offers = document.getElementById('offers');
+//     const offerCount = document.querySelectorAll('.offer').length;
+//     let currentIndex = 0;
 
-    function showOffer(index) {
-        offers.style.transform = `translateX(-${index * 100}%)`;
-    }
+//     function showOffer(index) {
+//         offers.style.transform = `translateX(-${index * 100}%)`;
+//     }
 
-    function nextOffer() {
-        currentIndex = (currentIndex + 0.8) % offerCount;
-        showOffer(currentIndex);
-    }
+//     function nextOffer() {
+//         currentIndex = (currentIndex + 0.8) % offerCount;
+//         showOffer(currentIndex);
+//     }
 
-    function prevOffer() {
-        currentIndex = (currentIndex - 0.8 + offerCount) % offerCount;
-        showOffer(currentIndex);
-    }
+//     function prevOffer() {
+//         currentIndex = (currentIndex - 0.8 + offerCount) % offerCount;
+//         showOffer(currentIndex);
+//     }
 
-    document.getElementById('nextBtn').addEventListener('click', nextOffer);
-    document.getElementById('prevBtn').addEventListener('click', prevOffer);
+//     document.getElementById('nextBtn').addEventListener('click', nextOffer);
+//     document.getElementById('prevBtn').addEventListener('click', prevOffer);
 
-    setInterval(nextOffer, 30000);
+//     setInterval(nextOffer, 30000);
 });
 
 

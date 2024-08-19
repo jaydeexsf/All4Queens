@@ -28,16 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   category_btn.forEach((btn) => {
     btn.classList.add('transition');
-    btn.classList.add('duration-[0.5s]');
+    btn.classList.add('duration-[0.15s]');
     btn.classList.add('hover:shadow-lg');
     btn.addEventListener('click', () => {  
       const category = btn.getAttribute('data-category'); 
       category_btn.forEach((button) => {  // Looping through all buttons to rese styles
         
         if (button.getAttribute('data-category') === category) {
-          button.style.backgroundColor = '#be185d';
-          button.style.color = 'white';
-          button.style.border = '1px solid rgb(190 24 93)';
+          button.style.backgroundColor = 'black';
+          button.style.color = '#ec4899';
+          button.style.border = '2px solid black';
         } else {
           button.style.backgroundColor = '#ec4899';
           button.style.color = '#111827';
