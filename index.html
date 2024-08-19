@@ -70,8 +70,8 @@
 
     <section id="special">
           
-      <div class="py-6  bg-pink-300 relative">
-        <h2 class="text-3xl font-bold text-white text-center mt-8">Special Offers</h2>
+      <div class="py-6  bg-pink-200 relative md:hidden">
+        <h2 class="text-3xl font-bold text-black text-center py-[50px]">Special Offers</h2>
         <!-- Slider main container -->
         <div class="swiper">
           <!-- Additional required wrapper -->
@@ -122,20 +122,20 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16">
+    <section id="services" class="py-16 bg-pink-200">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
         <div class="flex justify-center mb-8">
-           <button id="All" class="category-btn  text-[12px] font-semibold px-4 py-[6px] mx-2 bg-black border border-black text-pink-600 border rounded-lg" data-category="All">All</button>
-          <button class="category-btn px-4 text-[12px] font-semibold px-4 py-[6px] py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="nails">Nails</button>
-          <button class="category-btn px-4 text-[12px] font-semibold px-4 py-[6px] py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="braids">Braids</button>
-          <button class="category-btn px-4 text-[12px] font-semibold px-4 py-[6px] py-[1px] mx-2 bg-pink-500 text-black rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
+           <button id="All" class="category-btn  text-[12px] font-semibold px-4 py-[6px] mx-2 bg-black border border-[2px] border-black text-pink-600 border rounded-lg" data-category="All">All</button>
+          <button class="category-btn px-4 text-[12px] font-semibold px-4 py-[6px]  mx-2 bg-pink-500 text-black border-pink-500 rounded-lg hover:bg-pink-700" data-category="nails">Nails</button>
+          <button class="category-btn px-4 text-[12px] font-semibold px-4 py-[6px]  mx-2 bg-pink-500 text-black border-pink-500 rounded-lg hover:bg-pink-700" data-category="braids">Braids</button>
+          <button class="category-btn px-4 text-[12px] font-semibold px-4 py-[6px]  mx-2 bg-pink-500 text-black border-pink-500 rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
         </div>
 
         <div id="service-list" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
 <!--       the sample html for the whole data of service i used it in the script/javscript   -->
 
-           <!-- <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-category="nails">
+           <!-- <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-cat border-[2px] border-pink-500egory="nails">
             <img src="./database/images/acrylic-nails.jpg" alt="Nail Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
             <h3 class="text-xl font-semibold mb-2">Classic Manicure</h3>
             <p class="text-gray-700 mb-4">A classic manicure with a touch of elegance.</p>
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const wasBefore = (1 - (service.newPrice / service.price)) * 100;
 
          return  `
-              <div class="swiper-slide service-item bg-white p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
+              <div class="service-item bg-white p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
                 <div class="relative">    
                    <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-[300px] object-cover rounded-t-lg mb-0">
                    <span class="absolute top-3 left-3 ">${service.newPrice ? `<span class="bg-red-700 w-14 h-16 text-[12px] flex justify-center items-center rounded font-bold">${wasBefore.toFixed()}%<br>OFF</span>` : ``}</span>
@@ -307,9 +307,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const wasBefore =(1 - (service.newPrice / service.price)) * 100;
     
         return `
-          <div class="swiper-slide offer bg-white flex-shrink-0 p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
+          <div class="swiper-slide offer flex-shrink-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
                 <div class="relative">    
-                   <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-[300px] object-cover rounded-t-lg mb-0">
+                   <img src="${service.imgPath}" alt="${service.name} Service" class=" w-full h-[50vw] object-cover rounded-t-lg mb-0">
                    <span class="absolute top-3 left-3 ">${service.newPrice ? `<span class="bg-red-700 w-14 h-16 text-[12px] flex justify-center items-center rounded font-bold">${wasBefore.toFixed()}%<br>OFF</span>` : ``}</span>
                 </div>
                 <div class="bg-gray-200 p-3"><h3 class="text-xl font-semibold mb-2">${service.name}</h3>
@@ -345,6 +345,19 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
 specialdells();
+
+const swiperBtn = document.querySelector('.swiper-button-next');
+
+// swiperBtn.addEventListener('click', ()=> {
+  
+// })
+function autoSwipe() {
+    swiperBtn.click()
+    console.log('yep')
+}
+
+setInterval(()=> autoSwipe(), 9000)
+
 //     const offers = document.getElementById('offers');
 //     const offerCount = document.querySelectorAll('.offer').length;
 //     let currentIndex = 0;

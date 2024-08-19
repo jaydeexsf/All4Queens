@@ -44,6 +44,21 @@
  */
 
 
- .swiper {
-    width: 600px;
+ .swiper-wrapper {
+    /* gap: 10px; */
+    /* justify-content: center;
+    display: flex;
+    align-items: center; */
+    /* padding: 40px 0px; */
+    padding-right: 0;
+  }
+
+  .swiper {
+    height:fit-content;
+  }
+
+  .swiper-slide {
+    width: 200px;
+    height: 100%;
+    padding: 0px 20px 0px 20px;
   }
