@@ -57,8 +57,5 @@
     height:fit-content;
   }
 
-  .swiper-slide {
-    width: 200px;
-    height: 100%;
-    padding: 0px 20px 0px 20px;
-  }
+  /* .swiper-slide {
+  } */
