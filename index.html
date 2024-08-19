@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
          return  `
               <div class="service-item bg-white p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
                 <div class="relative">    
-                   <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-[auto] object-cover rounded-t-lg mb-0">
+                   <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-auto md:h-[250px] object-cover rounded-t-lg mb-0">
                    <span class="absolute top-3 left-3 ">${service.newPrice ? `<span class="bg-red-700 w-14 h-16 text-[12px] flex justify-center items-center rounded font-bold">${wasBefore.toFixed()}%<br>OFF</span>` : ``}</span>
                 </div>
                 <div class="bg-gray-200 p-3"><h3 class="text-xl font-semibold mb-2">${service.name}</h3>
