@@ -45,11 +45,6 @@
 
 
  .swiper-wrapper {
-    /* gap: 10px; */
-    /* justify-content: center;
-    display: flex;
-    align-items: center; */
-    /* padding: 40px 0px; */
     padding-right: 0;
   }
 
@@ -57,14 +52,11 @@
     height:fit-content;
   }
 
-  /* .swiper-slide {
-  } */
 
   footer a:hover {
 
   }
-/* 
-  footer a {
-    list-style:lower-greek;
-    text-decoration: underline 10px solid red;
+
+  /* .service-item  {
+    align-self: center;
   } */

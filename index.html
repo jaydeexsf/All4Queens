@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Professional beauty salon in Pretoria offering premium services in nails, braids, and lashes.">
+  <!-- <meta name="description" content="Professional beauty salon in Pretoria offering premium services in nails, braids, and lashes."> -->
+  <meta name="description" content="All4Queens - Your ultimate beauty salon for hair care, skincare, and luxurious makeovers.">
   <meta name="keywords" content="beauty salon, nails, braids, lashes, Pretoria, professional beauty services">
   <meta name="author" content="Innocentia Moloantoa">
-  <title>Beauty Salon - Pretoria</title>
+  <title>All4Queens Beauty Salon | Nails, Braids, Makeup and Lashes Services</title>
+  <link rel="stylesheet" href="styles.css">
   <link href="style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link
@@ -104,15 +106,7 @@
           <button class="category-btn px-4 text-[12px] font-semibold px-4 py-[6px]  mx-2 bg-pink-500 text-black border-pink-500 rounded-lg hover:bg-pink-700" data-category="lashes">Lashes</button>
         </div>
 
-        <div id="service-list" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
-<!--       the sample html for the whole data of service i used it in the script/javscript   -->
-
-           <!-- <div class="service-item bg-white p-6 rounded-lg shadow-lg" data-cat border-[2px] border-pink-500egory="nails">
-            <img src="./database/images/acrylic-nails.jpg" alt="Nail Service" class="w-full h-auto object-cover rounded-t-lg mb-4">
-            <h3 class="text-xl font-semibold mb-2">Classic Manicure</h3>
-            <p class="text-gray-700 mb-4">A classic manicure with a touch of elegance.</p>
-            <p class="text-pink-600 font-bold">$30</p>
-          </div> -->
+        <div id="service-list" class="grid grid-cols-1 px-8 sm:px-0 sm:grid-cols-2 xl: md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
 
         </div>
       </div>
@@ -239,12 +233,12 @@ document.addEventListener('DOMContentLoaded', () => {
           const wasBefore = (1 - (service.newPrice / service.price)) * 100;
 
          return  `
-              <div class="service-item bg-white p-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
+              <div class="service-item bg-white p-0 hover:cursor-pointer rounded-lg w-[100%] hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
                 <div class="relative">    
-                   <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-auto md:h-[250px] object-cover rounded-t-lg mb-0">
-                   <span class="absolute top-3 left-3 ">${service.newPrice ? `<span class="bg-red-700 w-14 h-16 text-[12px] flex justify-center items-center rounded font-bold">${wasBefore.toFixed()}%<br>OFF</span>` : ``}</span>
+                   <img src="${service.imgPath}" alt="${service.name} Service" class="w-full h-[250px] object-cover rounded-t-lg mb-0">
+                   <span class="absolute top-3 left-3 ">${service.newPrice ? `<span class="bg-pink-400 w-14 h-16 text-[12px] flex justify-center items-center rounded font-bold">${wasBefore.toFixed(0)}%<br>OFF</span>` : ``}</span>
                 </div>
-                <div class="bg-gray-200 p-3"><h3 class="text-xl font-semibold mb-2">${service.name}</h3>
+                <div class="bg-gray-200 p-3"><h3 class="text-xl font-semibold h-[40px] mb-2">${service.name}</h3>
                   <p class="text-gray-700 mb-4">${service.description}</p>
                   <p class="text-pink-600 flex items-center text-xl gap-3 font-extrabold">R${ service.newPrice ? service.newPrice : service.price.toFixed(2)} ${service.newPrice ? `<span class="text-gray-600 decoration-[1.5px] line-through text-[12px]">R${service.price}</span>` : ``} </p>
                 </div>  
@@ -299,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `
           <div class="swiper-slide offer flex-shrink-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
                 <div class="relative">    
-                   <img src="${service.imgPath}" alt="${service.name} Service" class=" w-full h-[40vw] max-h-[400px] min-h-[250px] object-cover rounded-t-lg mb-0">
+                   <img src="${service.imgPath}" alt="${service.name} Service" class=" w-full max-h-[400px] min-h-[250px] object-cover rounded-t-lg mb-0">
                    <span class="absolute top-3 left-3 ">${service.newPrice ? `<span class="bg-pink-400 w-14 h-16 text-[12px] flex justify-center items-center rounded font-extrabold">${wasBefore.toFixed()}%<br>OFF</span>` : ``}</span>
                    <span class="absolute text-[10px] size-11 flex justify-center items-center text-center bg-blue-700 text-white rounded-[50%] top-4 right-4">Save<br>R${service.price - service.newPrice} </span>
                 </div>
