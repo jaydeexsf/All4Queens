@@ -92,7 +92,8 @@ const sercviceData = [
       "category": "lashes",
       "imgPath": "./database/images/hybrid-lashes.jpg",
       "description": "Combination of classic and volume lashes for a textured look.",
-      "price": 85.00
+      "price": 385.00,
+      "newPrice": 270
     },
     {
       "name": "Lash Lift",
@@ -120,7 +121,8 @@ const sercviceData = [
       "category": "lashes",
       "imgPath": "./database/images/classic-refill.jpg",
       "description": "Touch-up service for classic lash extensions to keep them looking fresh.",
-      "price": 40.00
+      "price": 740.00,
+      "newPrice": 695
     },
     {
       "name": "Lash Extension Removal",
@@ -190,7 +192,8 @@ const sercviceData = [
       "category": "braids",
       "imgPath": "./database/images/braid-removal.jpg",
       "description": "Safe removal of braids with care for your natural hair.",
-      "price": 60.00
+      "price": 350,
+      "newPrice": 295
     },
     {
       "name": "Braided Updo",
