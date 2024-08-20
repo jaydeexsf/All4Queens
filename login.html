@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center items-center h-screen">
+    <div id="loginContainer" class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-6">Login</h1>
+        <form id="loginForm">
+            <div class="mb-4">
+                <label for="role" class="block text-sm font-medium">Role</label>
+                <select id="role" class="mt-1 py-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                    <option value="employer">Employer</option>
+                    <option value="employee">Employee</option>
+                </select>
+            </div>
+            <button id="log" type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg">Login</button>
+        </form>
+    </div>
+    <script src="admin/admin.js"></script>
+    <script>
+        const log = document.getElementById('log');
+        
+
+        log.addEventListener('click', ()=> {
+            const role = document.getElementById('role');
+            
+            const who = role.value.toLowerCase();
+
+            if (who === 'employer') {
+                window.location.href = './admin/admin.html'
+            } else {
+                window.location.href = './employee/employee.html'
+            }
+        })
+    </script>
+</body>
+</html>

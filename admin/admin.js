@@ -1,68 +1,107 @@
+// script.js
+
 document.addEventListener('DOMContentLoaded', () => {
-    const loginSection = document.getElementById('login-section');
-    const adminSection = document.getElementById('admin-section');
-    const loginForm = document.getElementById('login-form');
-    const clientForm = document.getElementById('client-form');
-    const clientsList = document.getElementById('clients-list');
+    const sidebar = document.getElementById('sidebar');
+    const openSidebarBtn = document.getElementById('openSidebar');
+    const closeSidebarBtn = document.getElementById('closeSidebar');
+    const menuItems = document.querySelectorAll('.menu-item');
+    const contentSections = document.querySelectorAll('.content');
+    const monthButtons = document.querySelectorAll('.month-button');
+    const weekButtons = document.querySelectorAll('.week-button');
+    const employeeList = document.getElementById('employeeList');
+    const clientSchedule = document.getElementById('clientSchedule');
 
-    // Simulate an admin password
-    const ADMIN_PASSWORD = 'admin123';
+    let clients = {
+        "January": {
+            "Week 1": ["Client A", "Client B"],
+            "Week 2": [],
+            "Week 3": ["Client C"],
+            "Week 4": ["Client D", "Client E"]
+        },
+        "February": {
+            "Week 1": [],
+            "Week 2": ["Client F"],
+            "Week 3": ["Client G"],
+            "Week 4": "Client H"
+        },
+        // Add more months and weeks with clients
+    };
 
-    // Handle login
-    loginForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const password = document.getElementById('password').value;
-        if (password === ADMIN_PASSWORD) {
-            loginSection.classList.add('hidden');
-            adminSection.classList.remove('hidden');
-        } else {
-            alert('Invalid password');
-        }
+    // Toggle Sidebar
+    openSidebarBtn.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full');
     });
 
-    // Handle client form submission
-    clientForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const clientName = document.getElementById('client-name').value;
-        const date = document.getElementById('date').value;
-        const time = document.getElementById('time').value;
-        const service = document.getElementById('service').value;
-
-        // Create client object
-        const client = {
-            name: clientName,
-            date: new Date(date),
-            time,
-            service
-        };
-
-        // Add client to table
-        addClientToTable(client);
-
-        // Clear form
-        clientForm.reset();
+    closeSidebarBtn.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
     });
 
-    function addClientToTable(client) {
-        const rows = Array.from(clientsList.querySelectorAll('tr'));
-        const index = rows.findIndex(row => {
-            const rowDate = new Date(row.querySelector('.date').textContent);
-            return client.date < rowDate || (client.date.toDateString() === rowDate.toDateString() && client.time < row.querySelector('.time').textContent);
+    // Handle Menu Item Clicks
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Highlight active menu
+            menuItems.forEach(i => i.classList.remove('bg-gray-900'));
+            item.classList.add('bg-gray-900');
+
+            // Show corresponding content
+            const targetContent = document.getElementById(`${item.id.replace('Menu', 'Content')}`);
+            contentSections.forEach(section => section.classList.add('hidden'));
+            targetContent.classList.remove('hidden');
         });
+    });
 
-        const newRow = document.createElement('tr');
-        newRow.innerHTML = `
-            <td class="p-2 border-b date">${client.date.toISOString().split('T')[0]}</td>
-            <td class="p-2 border-b time">${client.time}</td>
-            <td class="p-2 border-b">${client.name}</td>
-            <td class="p-2 border-b">${client.service}</td>
-        `;
+    // Handle Month Clicks
+    monthButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const month = button.dataset.month;
+            const weekTitle = document.getElementById('weekTitle');
+            weekTitle.textContent = `${month} Weeks Overview`;
 
-        if (index === -1) {
-            clientsList.appendChild(newRow);
+            // Show the week overview section
+            contentSections.forEach(section => section.classList.add('hidden'));
+            document.getElementById('weekOverview').classList.remove('hidden');
+
+            // Update week buttons and client schedule
+            weekButtons.forEach(weekButton => {
+                weekButton.addEventListener('click', () => {
+                    const week = weekButton.dataset.week;
+                    displayClients(month, week);
+                });
+            });
+        });
+    });
+
+    // Function to display clients for a selected week
+    function displayClients(month, week) {
+        clientSchedule.innerHTML = ''; // Clear previous schedule
+
+        if (clients[month] && clients[month][week]) {
+            clients[month][week].forEach((client, index) => {
+                const clientDiv = document.createElement('div');
+                clientDiv.textContent = client;
+                clientDiv.classList.add('p-4', 'rounded', 'text-white', `bg-color-${index % 5}`);
+                clientSchedule.appendChild(clientDiv);
+            });
         } else {
-            clientsList.insertBefore(newRow, rows[index]);
+            clientSchedule.textContent = 'No clients scheduled for this week.';
         }
     }
+
+    // Example for dynamically adding employees
+    document.getElementById('addEmployee').addEventListener('click', () => {
+        const li = document.createElement('li');
+        li.textContent = `Employee ${employeeList.children.length + 1}`;
+        employeeList.appendChild(li);
+    });
+
+    // Add custom colors for client backgrounds
+    const style = document.createElement('style');
+    style.textContent = `
+        .bg-color-0 { background-color: #FF6B6B; }
+        .bg-color-1 { background-color: #6BCB77; }
+        .bg-color-2 { background-color: #4D96FF; }
+        .bg-color-3 { background-color: #FFD93D; }
+        .bg-color-4 { background-color: #9D4EDD; }
+    `;
+    document.head.appendChild(style);
 });

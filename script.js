@@ -51,11 +51,11 @@ menuItems.forEach((item) => {
   function add() {
   cancel.style.display = 'flex';
 
-  setTimeout(()=>{
-  window.document.addEventListener('click', () =>{
-    remove();
-  }, 100)
-})
+//   setTimeout(()=>{
+//   window.document.addEventListener('click', () =>{
+//     remove();
+//   }, 100)
+// })
 }
 
   function remove () {
