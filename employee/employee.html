@@ -3,9 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Dashboard</title>
+    <title>Calendar Schedule</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .day-box {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+            border-radius: 0.375rem; /* Tailwind's rounded-md */
+        }
+        .time-slot {
+            height: 50px;
+            border-bottom: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+        }
+        .event {
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+        }
+    </style>
 </head>
-<body>
-    <div>YYYYYYYYYY</div>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-6">
+        <!-- Date Header -->
+        <div class="flex justify-between items-center mb-4">
+            <button id="prevDay" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Previous day</button>
+            <div id="dateHeader" class="text-xl font-semibold">Jan 22, 2022<br>Saturday</div>
+            <button id="nextDay" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Next day</button>
+        </div>
+
+        <!-- Calendar Days -->
+        <!-- <div class="grid grid-cols-7 gap-2 mb-4">
+            <div class="day-box">W<br>19</div>
+            <div class="day-box">T<br>20</div>
+            <div class="day-box">F<br>21</div>
+            <div class="day-box">S<br>22</div>
+            <div class="day-box">S<br>23</div>
+            <div class="day-box">M<br>24</div>
+            <div class="day-box">T<br>25</div>
+        </div> -->
+
+        <!-- Time Slots -->
+        <div class="flex flex-row">
+            <div class="w-20 bg-gray-200">
+                <div class="time-slot text-center font-medium">7 AM</div>
+                <div class="time-slot text-center font-medium">8 AM</div>
+                <div class="time-slot text-center font-medium">9 AM</div>
+                <div class="time-slot text-center font-medium">8 AM</div>
+                <div class="time-slot text-center font-medium">10 AM</div>
+                <div class="time-slot text-center font-medium">11 AM</div>
+                <div class="time-slot text-center font-medium">12 PM</div>
+                <div class="time-slot text-center font-medium">1 AM</div>
+                <div class="time-slot text-center font-medium">2 AM</div>
+                <div class="time-slot text-center font-medium">3 AM</div>
+                <div class="time-slot text-center font-medium">4 AM</div>
+                <div class="time-slot text-center font-medium">5 AM</div>
+                <div class="time-slot text-center font-medium">6 PM</div>
+                <div class="time-slot text-center font-medium">7 PM</div>
+            <div class="flex-1 p-4">
+                <!-- Events -->
+                <div class="event">
+                    <strong>Breakfast</strong><br>
+                    6:00 AM<br>
+                    Flight to Paris<br>
+                    John F. Kennedy International Airport
+                </div>
+                <div class="event">
+                    <strong>Sightseeing</strong><br>
+                    7:30 AM<br>
+                    Eiffel Tower
+                </div>
+                <!-- Add more events here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = ()=> {
+          const empl = localStorage.getItem("employee"); 
+          const bodi = document.getElementById('bodi');
+          const ht = window.document.getElementById('ht')
+
+          if (empl !== 'true') {
+              window.location.href = '../login.html'
+          } else {
+              bodi.style.display = "block";
+              ht.classList = '';
+          }
+
+          setTimeout(()=> {
+          localStorage.setItem('empl', 'false')
+      }, 10000 * 1000)
+      }
+  </script>
+    <script>
+        // JavaScript to handle date changes
+        const prevDayButton = document.getElementById('prevDay');
+        const nextDayButton = document.getElementById('nextDay');
+        const dateHeader = document.getElementById('dateHeader');
+        
+        let currentDate = new Date('2022-01-22'); // Starting date
+
+        function updateDate() {
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            dateHeader.textContent = `${currentDate.toLocaleDateString('en-US', options)}`;
+        }
+
+        prevDayButton.addEventListener('click', () => {
+            currentDate.setDate(currentDate.getDate() - 1);
+            updateDate();
+        });
+
+        nextDayButton.addEventListener('click', () => {
+            currentDate.setDate(currentDate.getDate() + 1);
+            updateDate();
+        });
+
+        updateDate();
+    </script>
 </body>
 </html>
+
+
+<!-- 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+</head>
+<body class="hidden">
+    <div></div>
+    <script>
+          window.onload = ()=> {
+            const empl = localStorage.getItem("employee"); 
+            const bodi = document.getElementById('bodi');
+            const ht = window.document.getElementById('ht')
+
+            if (empl !== 'true') {
+                window.location.href = '../login.html'
+            } else {
+                bodi.style.display = "block";
+                ht.classList = '';
+            }
+
+            setTimeout(()=> {
+            localStorage.setItem('admin', 'false')
+        }, 10000 * 1000)
+        }
+    </script>
+</body>
+</html> -->

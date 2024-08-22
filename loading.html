@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All4Queens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+   <div class="load h-[100vh] w-full bg-pink-300 flex justify-center items-center">
+        <span class="text-4xl font-bold">Loading</span>
+   </div>
+   <script>
+    setTimeout(()=> {
+
+        const Admin = localStorage.getItem("admin");
+    const employee = localStorage.getItem("employee");
+
+    if (Admin === 'true') {
+        window.location.href = './admin/admin.html'
+    } else if (employee === 'true') {
+        window.location.href = './employee/employee.html'
+    } else {
+        window.location.href = './login.html'
+    }
+
+    }, 900)
+    
+
+   </script>
+</body>
+</html>

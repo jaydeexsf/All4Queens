@@ -20,7 +20,7 @@
 </head>
 <body class="font-sans antialiased bg-gray-100">
   <!-- Header Section -->
-  <header class="bg-pink-600 text-white py-6 fixed top-0 w-full z-30 shadow-lg">
+  <header class="bg-pink-600 text-white py-4 fixed top-0 w-full z-30 shadow-lg">
     <div class="container mx-auto flex justify-between items-center px-4">
       <div class="select-none">
          <a href="#home" class="hover:cursor-pointer"><h1 class="text-3xl font-bold select-none">All4Queens</h1></a>
@@ -154,20 +154,20 @@
   </main>
 
   <!-- Footer Section -->
-  <footer class="bg-blue-950 text-sm text-white py-6">
+  <footer class="bg-pink-700 text-sm text-white py-6">
     <div class="flex justify-between px-[4vw] py-8">
 
       <div class="leftFF">
-        <h1 class="mb-4 text-pink-400">Quick Links</h1>
+        <h1 class="mb-4 text-pink-300">Quick Links</h1>
           <ul class="quick ml-4 flex gap-4 flex-col">
             <a href="">home</a>
             <a href="">careers</a>
-            <a href="">admin</a>
+            <a href="./login.html">admin</a>
           </ul>
       </div>
 
       <div class="rightFF">
-        <h1 class="mb-4 text-pink-400">Social Media Links</h1>
+        <h1 class="mb-4 text-pink-300">Social Media Links</h1>
         <ul class="contact ml-4 flex gap-4 flex-col">
           <a href="">instagram</a>
           <a href="">facebook</a>
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `
           <div class="swiper-slide offer flex-shrink-0 hover:cursor-pointer rounded-lg hover:scale-[1.01] duration-[1s] shadow-md hover:shadow-2xl" data-category="${service.category}">
                 <div class="relative">    
-                   <img src="${service.imgPath}" alt="${service.name} Service" class=" w-full max-h-[400px] min-h-[250px] object-cover rounded-t-lg mb-0">
+                   <img src="${service.imgPath}" alt="${service.name} Service" class=" w-full max-h-[400px] h-[40vw] min-h-[250px] object-cover rounded-t-lg mb-0">
                    <span class="absolute top-3 left-3 ">${service.newPrice ? `<span class="bg-pink-400 w-14 h-16 text-[12px] flex justify-center items-center rounded font-extrabold">${wasBefore.toFixed()}%<br>OFF</span>` : ``}</span>
                    <span class="absolute text-[10px] size-11 flex justify-center items-center text-center bg-blue-700 text-white rounded-[50%] top-4 right-4">Save<br>R${service.price - service.newPrice} </span>
                 </div>

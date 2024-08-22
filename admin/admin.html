@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="ht" class="bg-red-900" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salon Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body id="bodi" class="bg-gray-100 hidden">
     <!-- Sidebar -->
     <div class="flex">
         <div id="sidebar" class="w-64 h-screen bg-gray-800 text-white fixed transform -translate-x-full md:translate-x-0 transition-transform duration-300">
@@ -65,63 +65,26 @@
     </div>
 
     <script src="admin.js"></script>
+    <script>
+        window.onload = ()=> {
+            const Admin = localStorage.getItem("admin"); 
+            const bodi = document.getElementById('bodi');
+            const ht = window.document.getElementById('ht')
+
+            if (Admin !== 'true') {
+                window.location.href = '../login.html'
+            } else {
+                bodi.style.display = "block";
+                ht.classList = '';
+            }
+
+            setTimeout(()=> {
+            localStorage.setItem('admin', 'false')
+        }, 10000 * 1000)
+        }
+
+       
+    </script>
 </body>
 </html>
 
-
-
-<!---
-
-    <div id="employerDashboard" class="max-w-4xl w-full mx-auto mt-10 p-8 bg-white rounded-lg shadow-lg">
-        <h2 class="text-3xl font-bold mb-6 text-center">Employer Dashboard</h2>
-        <button id="addClientBtn" class="bg-green-500 text-white py-2 px-4 rounded-lg mb-6">Add Client</button>
-        <div id="calendarView" class="grid grid-cols-1 gap-4"></div>
-    </div>
-
-    <div id="employeeDashboard" class="hidden max-w-4xl w-full mx-auto mt-10 p-8 bg-white rounded-lg shadow-lg">
-        <h2 class="text-3xl font-bold mb-6 text-center">Employee Dashboard</h2>
-        <div id="employeeView" class="overflow-x-auto">
-            <table class="min-w-full bg-white">
-                <thead class="bg-gray-200">
-                    <tr>
-                        <th class="py-2 px-4 border-b border-gray-300 text-left">Date</th>
-                        <th class="py-2 px-4 border-b border-gray-300 text-left">Time</th>
-                        <th class="py-2 px-4 border-b border-gray-300 text-left">Client</th>
-                        <th class="py-2 px-4 border-b border-gray-300 text-left">Service</th>
-                    </tr>
-                </thead>
-                <tbody id="employeeTableBody"></tbody>
-            </table>
-        </div>
-    </div>
-
-    <div id="addClientModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-            <h3 class="text-2xl font-bold mb-4">Add Client</h3>
-            <form id="clientForm">
-                <div class="mb-4">
-                    <label for="clientName" class="block text-sm font-medium">Client Name</label>
-                    <input type="text" id="clientName" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
-                </div>
-                <div class="mb-4">
-                    <label for="service" class="block text-sm font-medium">Service</label>
-                    <input type="text" id="service" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
-                </div>
-                <div class="mb-4">
-                    <label for="appointmentDate" class="block text-sm font-medium">Date</label>
-                    <input type="date" id="appointmentDate" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
-                </div>
-                <div class="mb-4">
-                    <label for="appointmentTime" class="block text-sm font-medium">Time</label>
-                    <input type="time" id="appointmentTime" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
-                </div>
-                <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg">Add Client</button>
-            </form>
-        </div>
-    </div>
-<script type="module" src="admin.js"></script>
-<script>
-    console.log('ye')
-</script>
-</body>
-</html>  -->
