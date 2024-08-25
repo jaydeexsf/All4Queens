@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        input:user-invalid {
-            outline-color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="flex bg-pink-300 justify-center items-center h-screen">
     <!-- <div id="loginContainer" class="max-w-md w-full bg-white p-8 hidden rounded-lg shadow-lg">
@@ -28,15 +24,15 @@
 
     <div class="login font-semibold w-[60%] min-w-[200px] py-8 italic rounded-lg px-8 max-w-96 flex flex-col bg-pink-600">
         <h1 class="text-2xl text-center mb-10 text-pink-200">Login</h1>
-        <form id="loginForm" class="flex flex-col" action="./login.html">
+        <form id="loginForm" class="flex relative flex-col" action="./login.html">
             <!-- <label for="username" id="username" class="username absolute top-[12px] left-4">User-Name</label> -->
             <input type="text" name="username" id="username" placeholder="UserName" required class="username focus:outline-none shadow-lg text-sm border-transparent focus:ring-2 focus:ring-pink-200 px-2 rounded py-3 relative">
 
-            <input id="password" type="text" name="password" placeholder="password" required class=" mt-4 focus:outline-none shadow-lg text-sm border-transparent focus:ring-2 focus:ring-pink-200 px-2 rounded py-3 relative">
-            <button  type="submit" class="submit bg-pink-300 mt-6 rounded-md hover:bg-pink-400 transition hover:cursor-pointer py-2 text-center">Login</button>
-            <p id="wrong" class="wrong">
-
+            <input id="password" type="text" name="password" placeholder="password" required class=" mt-4 mb-4 focus:outline-none shadow-lg text-sm border-transparent focus:ring-2 focus:ring-pink-200 px-2 rounded py-3 relative">
+            <p id="wrong" class="wrong mt-8 absolute top-20 text-sm text-red-100">
+                
             </p>
+            <button  type="submit" class="submit bg-pink-300 mt-6 rounded-md hover:bg-pink-400 transition hover:cursor-pointer py-2 text-center">Login</button>
         </form>
     </div>
     <!-- <script src="admin/admin.js"></script> -->
@@ -61,46 +57,37 @@
                 }
             }
 
-
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const wrong = document.getElementById('wrong');
 
             if (username === 'inno' && password === 'inno710') {
                 window.location.href = 'admin/admin.html';
-                localStorage.setItem('admin', 'true')
+                localStorage.setItem('admin', 'true');
+                return;
             } else {
-                // alert('wrong password or username')
+                setTimeout(()=>{
+                    wrong.innerHTML = ''
+                }, 7000)
+                wrong.innerHTML = 'The username or password is wrong'
             }
             
             for (let i in employees) {
-                console.log(employees[i].name);
+                console.log(employees[i].username);
+                console.log(employees[i].password);
             
-            if (username === employees[i].name && password === employees[i].password ) {
+            if (username == employees[i].name && password == employees[i].password ) {
                 window.location.href = 'employee/employee.html';
                 localStorage.setItem('employee', "true")
             } else {
-                // alert('wrong password username')
+                setTimeout(()=>{
+                    wrong.innerHTML = ''
+                }, 7000)
+                wrong.innerHTML = 'The username or password is wrong'
             }
         }
 
-
-            // window.location.href = 'admin/admin.html';
-
         })
-
-        // document.getElementById('loginContainer').addEventListener('submit', function(event) {
-        //     event.preventDefault(); 
-
-        //     const role = document.getElementById('role').value; // Get the selected role value
-
-        //     if (role === 'employer') { 
-        //         localStorage.setItem('adminLoggedIn', true)
-        //     } else if (role === 'employee') {
-        //         localStorage.setItem('employee', true)
-        //     }
-        // });
-
     </script>
 </body>
 </html>

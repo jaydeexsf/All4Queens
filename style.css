@@ -12,7 +12,7 @@
     /* font-family: "Almendra", serif; */
      font-family: "Roboto", sans-serif;
      font-weight: 400;
-     font-style: normal;
+     /* font-style: normal; */
 }
 
 .leftFF a {
@@ -57,6 +57,11 @@
 
   }
 
-  /* .service-item  {
-    align-self: center;
-  } */
+#username:user-invalid {
+    outline: rgb(0, 238, 255) solid 3px;
+    /* border: solid 10px red; */
+  }
+
+  #password:user-invalid {
+    outline: rgb(0, 238, 255) solid 3px;
+  }
