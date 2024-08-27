@@ -62,28 +62,28 @@
             const wrong = document.getElementById('wrong');
 
             if (username === 'inno' && password === 'inno710') {
-                window.location.href = 'admin/admin.html';
+                window.location.href = './loading.html';
                 localStorage.setItem('admin', 'true');
                 return;
-            } else {
-                setTimeout(()=>{
-                    wrong.innerHTML = ''
-                }, 7000)
-                wrong.innerHTML = 'The username or password is wrong'
             }
+            // } else {
+            //     setTimeout(()=>{
+            //         wrong.innerHTML = ''
+            //     }, 7000)
+            //     wrong.innerHTML = 'The username or password is wrong'
+            // }
             
             for (let i in employees) {
-                console.log(employees[i].username);
-                console.log(employees[i].password);
             
-            if (username == employees[i].name && password == employees[i].password ) {
-                window.location.href = 'employee/employee.html';
+            if (username === employees[i].username && password === employees[i].password ) {
+                wrong.innerHTML = ''
+                window.location.href = './loading.html';
                 localStorage.setItem('employee', "true")
             } else {
                 setTimeout(()=>{
                     wrong.innerHTML = ''
                 }, 7000)
-                wrong.innerHTML = 'The username or password is wrong'
+                wrong.innerHTML = 'The username or password is wrong';
             }
         }
 
