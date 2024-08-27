@@ -76,9 +76,10 @@
             for (let i in employees) {
             
             if (username === employees[i].username && password === employees[i].password ) {
-                wrong.innerHTML = ''
+                wrong.innerHTML = '';
                 window.location.href = './loading.html';
                 localStorage.setItem('employee', "true")
+                return;
             } else {
                 setTimeout(()=>{
                     wrong.innerHTML = ''
